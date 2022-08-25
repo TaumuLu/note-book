@@ -67,8 +67,6 @@ typings/
 
 ####################################
 
-package-lock.json
-
 # custom
 lib/
 build/
