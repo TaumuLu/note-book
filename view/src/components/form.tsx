@@ -1,8 +1,9 @@
+import { Button, Form, Input, message, Modal, Select } from 'antd'
 import React, { useMemo, useState } from 'react'
-import { Form, Select, Modal, Input, message, Button } from 'antd'
 
 import { IState, IValues } from '../types'
 import { ADD_TITLE } from '../utils/constants'
+
 import './form.scss'
 
 interface IProps {

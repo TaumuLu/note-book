@@ -1,11 +1,12 @@
 import {
-  Entity,
   Column,
   CreateDateColumn,
-  PrimaryGeneratedColumn,
-  ManyToOne,
+  Entity,
   JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
 } from 'typeorm'
+
 import { CategoriesEntity } from '../categories/categories.entity'
 
 @Entity('bill')
@@ -25,10 +26,7 @@ export class BillEntity {
   @Column('float')
   amount: number
 
-  @ManyToOne(
-    type => CategoriesEntity,
-    categories => categories.bills
-  )
+  @ManyToOne(type => CategoriesEntity, categories => categories.bills)
   @JoinColumn({ name: 'category' })
   categories: CategoriesEntity
 }

@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm'
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
+
 import { BillEntity } from '../bill/bill.entity'
 
 @Entity('categories')
@@ -12,9 +13,6 @@ export class CategoriesEntity {
   @Column('integer')
   type: number
 
-  @OneToMany(
-    type => BillEntity,
-    bill => bill.category
-  )
+  @OneToMany(type => BillEntity, bill => bill.category)
   bills: BillEntity[]
 }

@@ -22,7 +22,7 @@ export class BillService extends TypeOrmCrudService<BillEntity> {
         }
         return [income, pay]
       },
-      [0, 0]
+      [0, 0],
     )
   }
 }

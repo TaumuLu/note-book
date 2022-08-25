@@ -1,6 +1,7 @@
-import { createConnection } from 'typeorm'
 import { readFileSync } from 'fs'
 import { join } from 'path'
+import { createConnection } from 'typeorm'
+
 import { BillEntity } from '../src/bill/bill.entity'
 import { CategoriesEntity } from '../src/categories/categories.entity'
 
@@ -23,13 +24,13 @@ const getEntityList = (path: string, Entity: any) => {
           e[key] = value
         }
         return e
-      }, new Entity())
+      }, new Entity()),
     )
   }, [])
 }
 const categoriesData = getEntityList(
   join(__dirname, '../data/categories.csv'),
-  CategoriesEntity
+  CategoriesEntity,
 )
 const billData = getEntityList(join(__dirname, '../data/bill.csv'), BillEntity)
 

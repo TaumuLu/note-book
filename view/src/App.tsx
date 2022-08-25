@@ -1,27 +1,25 @@
-import React from 'react'
-import axios from 'axios'
-import { Table, Button, Row, Col, ConfigProvider, Empty } from 'antd'
 import { RedoOutlined } from '@ant-design/icons'
-import moment from 'moment'
+import { QuerySort, RequestQueryBuilder } from '@nestjsx/crud-request'
+import { Button, Col, ConfigProvider, Empty, Row, Table } from 'antd'
 import zhCN from 'antd/es/locale/zh_CN'
-import { RequestQueryBuilder, QuerySort } from '@nestjsx/crud-request'
-import Form from './components/form'
+import axios from 'axios'
+import moment from 'moment'
+import React from 'react'
+
 import Filter from './components/filter'
-import { ADD_TITLE, DEFAULT_SOFT } from './utils/constants'
+import Form from './components/form'
 import { IState, IValues } from './types'
+import { ADD_TITLE, DEFAULT_SOFT } from './utils/constants'
 
 import './App.scss'
 
-export default class extends React.PureComponent<{}, IState> {
+export default class extends React.PureComponent<any, IState> {
   columns = [
     {
       title: '账单时间',
       dataIndex: 'time',
       sorter: true,
-      render: (value: string) =>
-        moment(value)
-          .local()
-          .format(),
+      render: (value: string) => moment(value).local().format(),
     },
     {
       title: '账单类型',
