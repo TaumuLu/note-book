@@ -1,12 +1,12 @@
 const isDev = process.env.NODE_ENV === 'development'
 
-module.exports = {
+export const mysqlConfig = {
   type: 'mysql',
   host: isDev ? '127.0.0.1' : 'mysql',
   port: 3306,
   username: 'root',
-  password: '1234',
+  password: '123456',
   database: 'notebook',
-  entities: ['dist/**/*.entity.{ts,js}'],
+  entities: ['dist/**/**.entity.{ts,js}'],
   synchronize: true,
 }

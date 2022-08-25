@@ -1,11 +1,10 @@
 import { readFileSync } from 'fs'
 import { join } from 'path'
-import { createConnection } from 'typeorm'
+import { DataSource } from 'typeorm'
 
 import { BillEntity } from '../src/bill/bill.entity'
 import { CategoriesEntity } from '../src/categories/categories.entity'
-
-import ormconfig = require('../ormconfig.js')
+import { mysqlConfig } from '../src/ormconfig'
 
 const getEntityList = (path: string, Entity: any) => {
   const data = readFileSync(path, {
@@ -34,10 +33,13 @@ const categoriesData = getEntityList(
 )
 const billData = getEntityList(join(__dirname, '../data/bill.csv'), BillEntity)
 
-createConnection({
-  ...(ormconfig as any),
+export const appDataSource = new DataSource({
+  ...(mysqlConfig as any),
   entities: ['src/**/*.entity.{ts,js}'],
 })
+
+appDataSource
+  .initialize()
   .then(async connection => {
     await connection.dropDatabase()
     await connection.synchronize()
