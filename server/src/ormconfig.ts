@@ -5,7 +5,7 @@ export const mysqlConfig = {
   host: isDev ? '127.0.0.1' : 'mysql',
   port: 3306,
   username: 'root',
-  password: '123456',
+  password: '1234',
   database: 'notebook',
   entities: ['dist/**/**.entity.{ts,js}'],
   synchronize: true,
